@@ -2,7 +2,7 @@
 #include<stdlib.h>
 
 struct Node {
-    int data;
+    int val;
     struct Node* next;
 };
 
@@ -17,7 +17,7 @@ void createAdjList(struct Node ** A, int n){
             int x;
             scanf("%d", &x);
             struct Node * temp = (struct Node *)malloc(sizeof(struct Node));
-            temp->data = x;
+            temp->val = x;
             temp->next = NULL;
             if(A[i] == NULL){
                 A[i] = temp;
@@ -37,7 +37,7 @@ void printAdjList(struct Node ** A, int n){
         struct Node * p = A[i];
         printf("Vertices adjacent to vertex %d: ", i);
         while(p != NULL){
-            printf("%d ", p->data);
+            printf("%d ", p->val);
             p = p->next;
         }
         printf("\n");
@@ -49,8 +49,8 @@ void dfs(struct Node ** A, int n, int * visited, int x){
     printf("%d ", x);
     struct Node * p = A[x];
     while(p != NULL){
-        if(visited[p->data] == 0){
-            dfs(A, n, visited, p->data);
+        if(visited[p->val] == 0){
+            dfs(A, n, visited, p->val);
         }
         p = p->next;
     }

@@ -71,11 +71,12 @@ void aStar(struct Node** A, int n, int* h, int start, int goal) {
         if (current == goal) {
             printf("Path found: ");
             int temp = goal;
+            int totalCost = gScore[goal];
             while (temp != -1) {
                 printf("%d ", temp);
                 temp = cameFrom[temp];
             }
-            printf("\n");
+            printf("\nCost: %d\n", totalCost);
             return;
         }
 
